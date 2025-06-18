@@ -7,6 +7,7 @@
 <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    Top Half
     <nav class="nav flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -24,11 +25,27 @@
             <NavLink class="nav-link" href="weather">
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Story Mode
             </NavLink>
+            <NavLink class="nav-link" href="weather"></NavLink>
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Story Mode - quick mode
+            </NavLink>
+        </div>
+
+        Bottom Half
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Suggestions
+            </NavLink>
         </div>
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Suggestions
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Settings
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Leaderboards
             </NavLink>
         </div>
     </nav>
