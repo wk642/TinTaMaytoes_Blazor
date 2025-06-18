@@ -2,7 +2,7 @@ header{
     background-color: tomato;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap'); */
 
 .cbyg {
   font-family: "Covered By Your Grace", cursive;
