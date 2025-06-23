@@ -5,9 +5,9 @@
 }
 
 main {
-    flex: 1;
+    flex: 2;
+    background-color: rgb(245, 214, 157);
 }
-
 /* .cbyg {
   font-family: "Covered By Your Grace", cursive;
   font-weight: 400;
