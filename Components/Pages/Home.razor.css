@@ -9,3 +9,12 @@ header{
   font-weight: 400;
   font-style: normal;
 }
+
+.home-page-icon {
+  width: 50%;
+}
+
+.name-explanation-video {
+  width: 50%;
+  float: left;
+}
