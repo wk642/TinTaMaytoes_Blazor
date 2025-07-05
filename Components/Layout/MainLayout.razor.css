@@ -1,105 +1,88 @@
-.page {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+.sidebar-wrapper { 
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially off-screen (hidden) */
+    width: 250px; /* Width of your sidebar when open */
+    height: 100vh;
+    background-color: transparent; /* Sidebar container itself is transparent */
+    padding-top: 56px; /* Space for the top-row content */
+    transition: left 0.3s ease-in-out; /* Smooth slide-in/out animation */
+    z-index: 1040; /* Ensures it's above other page content */
 }
 
-main {
-    flex: 2;
-    background-color: rgb(245, 214, 157);
+.sidebar-wrapper.show {
+    left: 0; /* When 'show' class is added by Bootstrap, slide it into view */
 }
-/* .cbyg {
-  font-family: "Covered By Your Grace", cursive;
-  font-weight: 400;
-  font-style: normal;
-} */
 
-.sidebar {
-    /* background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%); */
-    background-color: green;
+.sidebar-wrapper .nav-scrollable {
+    background-color: #343a40; /* Dark background for the menu items themselves */
+    height: 100%; /* Make it fill the sidebar height */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional: subtle shadow for depth */
+}
+
+.menu-button {
+    position: fixed; /* Stays in place when scrolling */
+    top: 10px; /* 10px from the top of the viewport */
+    left: 10px; /* 10px from the left of the viewport */
+    z-index: 1050; /* Higher z-index to be above the sidebar and main content */
+    background-color: transparent;
+    border: none;
+    color: white; /* Color of the bars icon */
+    font-size: 1.5rem; /* Size of the icon */
+    cursor: pointer;
 }
 
 .top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
-    height: 3.5rem;
+    z-index: 1060; /* Highest z-index for the top bar */
+    position: relative; /* Allows positioning of children (like the menu button if not fixed) */
+    padding-left: 15px; /* General padding, adjust as needed */
+    background-color: #343a40; /* Dark background for the top bar itself */
+    height: 56px; /* Standard height for a header bar */
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically align items in the center */
 }
 
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
-
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
-        text-decoration: underline;
-    }
-
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-@media (max-width: 640.98px) {
-    .top-row {
-        justify-content: space-between;
-    }
-
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        margin-left: 0;
-    }
-}
-
-@media (min-width: 641px) {
-    .page {
-        flex-direction: row;
-    }
-
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
-    }
-
-    .top-row {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-
-    .top-row.auth ::deep a:first-child {
-        flex: 1;
-        text-align: right;
-        width: 0;
-    }
-
-    .top-row, article {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
-    }
-}
-
-#blazor-error-ui {
-    color-scheme: light only;
-    background: lightyellow;
-    bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    display: none;
-    left: 0;
-    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+.overlay {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1000;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1030; /* Below sidebar, above main content */
+    display: none; /* Hidden by default */
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+.overlay.show {
+    display: block; /* Show when 'show' class is added */
+}
+
+body.sidebar-open {
+    overflow-x: hidden; 
+}
+
+.sidebar-wrapper .nav-link {
+    color: rgba(255, 255, 255, 0.75); /* Default link color */
+    padding: 0.75rem 1.5rem;
+}
+
+.sidebar-wrapper .nav-link:hover,
+.sidebar-wrapper .nav-link.active {
+    color: #fff; /* White on hover/active */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover/active */
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures page takes at least full viewport height */
+}
+
+main {
+    flex-grow: 1; /* Main content takes up available space */
+    padding-top: 56px; /* Push content down to avoid being covered by fixed top-row */
+}
+
+.content {
+    padding-top: 1rem !important; 
+}
