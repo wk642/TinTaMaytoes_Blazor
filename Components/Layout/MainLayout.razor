@@ -1,23 +1,52 @@
 ﻿@inherits LayoutComponentBase
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div class="page">
-    <div class="sidebar">
+    <div class="top-row">
+        <button class="menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-expanded="false" aria-controls="sidebarCollapse">
+            <i class="fas fa-bars"></i> </button>
+        </div>
+
+    <div class="collapse sidebar-wrapper" id="sidebarCollapse">
         <NavMenu />
     </div>
 
     <main>
-        @* <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">Testing </a>
-        </div> *@
-
         <article class="content px-4">
             @Body
         </article>
     </main>
 </div>
 
+<div class="overlay" onclick="document.getElementById('sidebarCollapse').classList.remove('show'); document.body.classList.remove('sidebar-open'); this.classList.remove('show');"></div>
+
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
     <a href="." class="reload">Reload</a>
     <span class="dismiss">🗙</span>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script>
+    // JavaScript to add/remove classes for body and overlay when sidebar collapses/shows
+    document.addEventListener('DOMContentLoaded', function () {
+        var sidebar = document.getElementById('sidebarCollapse');
+        var overlay = document.querySelector('.overlay');
+
+        // Check if elements exist before adding listeners to prevent errors
+        if (sidebar && overlay) {
+            sidebar.addEventListener('show.bs.collapse', function () {
+                document.body.classList.add('sidebar-open');
+                overlay.classList.add('show');
+            });
+
+            sidebar.addEventListener('hide.bs.collapse', function () {
+                document.body.classList.remove('sidebar-open');
+                overlay.classList.remove('show');
+            });
+        }
+    });
+</script>
