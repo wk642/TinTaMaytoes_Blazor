@@ -58,7 +58,8 @@
 }
 
 body.sidebar-open {
-    overflow-x: hidden; 
+    overflow-x: hidden;
+    background-color: red;
 }
 
 .sidebar-wrapper .nav-link {
