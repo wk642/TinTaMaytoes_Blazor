@@ -101,12 +101,27 @@
 
 .nav-scrollable {
     display: none;
+    background-color: orange;
 }
 
 .navbar-toggler:checked ~ .nav-scrollable {
     display: block;
 }
 
+@media (max-width: 640px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .nav-scrollable {
+        display: block;
+        width: 150%;
+
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
 @media (min-width: 641px) {
     .navbar-toggler {
         display: none;
